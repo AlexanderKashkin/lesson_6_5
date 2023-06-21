@@ -1,3 +1,5 @@
+import os
+
 from config import browser as b
 from selene import be, have
 
@@ -12,6 +14,7 @@ def test_form(set_window_size):
     day_birthday = '006'
     subject = 'Maths'
     hobby = 'Sports'
+    path_for_picture = 'image/meme.jpg'
     phone = '1234567890'
     address = 'my_address'
     state = 'NCR'
@@ -36,6 +39,8 @@ def test_form(set_window_size):
     b.element(f'//label[contains(text(), "Sports")]').click()
     b.element('#currentAddress').should(be.blank).click().type(address)
 
+    b.element('#uploadPicture').send_keys(os.path.abspath(path_for_picture))
+
     b.element('#state').click()
     b.element('#react-select-3-input').type(state).press_enter()
     b.element('#react-select-4-input').type(city).press_enter()
@@ -52,6 +57,7 @@ def test_form(set_window_size):
         have.text(f'{day_birthday[1:]} {month_birthday},{year_birthday}'))
     b.all('.table-responsive tr').element_by(have.text('Subjects')).should(have.text(f'{subject}'))
     b.all('.table-responsive tr').element_by(have.text('Hobbies')).should(have.text(f'{hobby}'))
+    b.all('.table-responsive tr').element_by(have.text('Picture')).should(have.text('meme.jpg'))
     b.all('.table-responsive tr').element_by(have.text('Address')).should(have.text(f'{address}'))
     b.all('.table-responsive tr').element_by(have.text('State and City')).should(have.text(f'{state} {city}'))
 
