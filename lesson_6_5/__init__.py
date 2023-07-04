@@ -1,0 +1,1 @@
+from lesson_6_5.demoqa_form import StudentRegistrationForm

@@ -1,8 +1,6 @@
-import os
-
 from config import browser as b
-from selene import be, have
-from lesson_6_5.demoqa_form import StudentRegistrationForm
+from selene import have
+from lesson_6_5 import StudentRegistrationForm
 
 
 def test_form(set_window_size):
