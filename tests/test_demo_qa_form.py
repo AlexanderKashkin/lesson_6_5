@@ -1,5 +1,3 @@
-from config import browser as b
-from selene import have
 from lesson_6_5 import StudentRegistrationForm
 
 
@@ -20,7 +18,6 @@ def test_form(set_window_size):
     reg_form.fill_city()
     reg_form.close()
 
-    b.element('#example-modal-sizes-title-lg').should(have.text('Thanks for submitting the form'))
-    b.all('.table-responsive>table>tbody>tr').should(have.size(10))
     reg_form.should_registered_user()
+
     reg_form.close_modal_window()

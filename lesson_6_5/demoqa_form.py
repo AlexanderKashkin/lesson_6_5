@@ -90,13 +90,15 @@ class StudentRegistrationForm:
         b.element('[id="closeLargeModal"]').click()
 
     def should_registered_user(self):
+        b.element('#example-modal-sizes-title-lg').should(have.text('Thanks for submitting the form'))
+        b.all('.table-responsive>table>tbody>tr').should(have.size(10))
         b.element('.table').all('td').even.should(
             have.exact_texts(
                 f'{self.first_name} {self.last_name}',
                 f'{self.email}',
                 f'{self.gender}',
                 f'{self.phone}',
-                f'{self.day_birthday} {self.month_birthday},{self.year_birthday}',
+                f'{self.day_birthday[1:]} {self.month_birthday},{self.year_birthday}',
                 f'{self.subject}',
                 f'{self.hobby}',
                 'meme.jpg',
