@@ -2,6 +2,7 @@ import os
 
 from config import browser as b
 from selene import be, have
+from tests.path import path_for_picture as path
 
 
 class StudentRegistrationForm:
@@ -14,7 +15,7 @@ class StudentRegistrationForm:
                  day_birthday: str = '006',
                  subject: str = 'Maths',
                  hobby: str = 'Sports',
-                 path_for_picture: str = 'image/meme.jpg',
+                 path_for_picture: str = path,
                  phone: str = '1234567890',
                  address: str = 'my_address',
                  state: str = 'NCR',
@@ -87,3 +88,19 @@ class StudentRegistrationForm:
 
     def close_modal_window(self):
         b.element('[id="closeLargeModal"]').click()
+
+    def should_registered_user(self):
+        b.element('.table').all('td').even.should(
+            have.exact_texts(
+                f'{self.first_name} {self.last_name}',
+                f'{self.email}',
+                f'{self.gender}',
+                f'{self.phone}',
+                f'{self.day_birthday} {self.month_birthday},{self.year_birthday}',
+                f'{self.subject}',
+                f'{self.hobby}',
+                'meme.jpg',
+                f'{self.address}',
+                f'{self.state} {self.city}'
+            )
+        )
