@@ -1,3 +1,6 @@
+from tests import path
+
+
 class UserStudent:
     def __init__(self,
                  first_name: str = 'Alexey',
@@ -24,7 +27,7 @@ class UserStudent:
         self.day_birthday = day_birthday
         self.subject = subject
         self.hobby = hobby
-        self.path_for_picture = path_for_picture
+        self.path_for_picture = path
         self.phone = phone
         self.address = address
         self.state = state

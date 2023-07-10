@@ -1,5 +1,3 @@
-from config import browser as b
-from selene import have
 from lesson_6_5 import StudentRegistrationForm, UserStudent
 
 
