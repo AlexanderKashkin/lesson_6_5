@@ -26,7 +26,6 @@ class StudentRegistrationForm:
         b.element(f'[class="react-datepicker__day react-datepicker__day--{user.day_birthday}"]').click()
         b.element('#subjectsInput').type(user.subject).press_enter()
         b.element(f'//label[contains(text(), "Sports")]').click()
-        print(user.path_for_picture)
         b.element('#uploadPicture').send_keys(os.path.abspath(user.path_for_picture))
         b.element('#currentAddress').should(be.blank).click().type(user.address)
         b.element('#state').click()
