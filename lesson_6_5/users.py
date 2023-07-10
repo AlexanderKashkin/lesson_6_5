@@ -11,7 +11,7 @@ class UserStudent:
                  day_birthday: str = '006',
                  subject: str = 'Maths',
                  hobby: str = 'Sports',
-                 path_for_picture: str = 'image/meme.jpg',
+                 path_for_picture: str = path,
                  phone: str = '1234567890',
                  address: str = 'my_address',
                  state: str = 'NCR',
@@ -27,7 +27,7 @@ class UserStudent:
         self.day_birthday = day_birthday
         self.subject = subject
         self.hobby = hobby
-        self.path_for_picture = path
+        self.path_for_picture = path_for_picture
         self.phone = phone
         self.address = address
         self.state = state
