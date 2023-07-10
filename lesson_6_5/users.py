@@ -16,7 +16,7 @@ class UserStudent:
                  ):
         self.first_name = first_name
         self.last_name = last_name
-        self.email = f'{self.first_name.lower()}_{self.last_name.lower()}@email.com'
+        self.email = f'{self.first_name.lower()}_{self.last_name.lower()}@mail.com'
         self.gender = gender
         self.year_birthday = year_birthday
         self.month_birthday = month_birthday
