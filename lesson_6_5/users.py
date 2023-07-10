@@ -1,4 +1,4 @@
-from tests import path
+from tests.path import path_for_picture as path
 
 
 class UserStudent:

@@ -1,3 +1,5 @@
+import os
+
 from config import browser as b
 from selene import be, have
 from lesson_6_5 import UserStudent
@@ -25,7 +27,7 @@ class StudentRegistrationForm:
         b.element('#subjectsInput').type(user.subject).press_enter()
         b.element(f'//label[contains(text(), "Sports")]').click()
         print(user.path_for_picture)
-        b.element('#uploadPicture').send_keys(user.path_for_picture)
+        b.element('#uploadPicture').send_keys(os.path.abspath(user.path_for_picture))
         b.element('#currentAddress').should(be.blank).click().type(user.address)
         b.element('#state').click()
         b.element('#react-select-3-input').type(user.state).press_enter()
