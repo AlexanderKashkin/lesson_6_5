@@ -40,20 +40,21 @@ class StudentRegistrationForm:
     def close_modal_window(self):
         b.element('[id="closeLargeModal"]').click()
 
-    def assert_reg(self, user: UserStudent):
+    def should_registered_user(self, user: UserStudent):
+        full_name = f'{user.first_name} {user.last_name}'
         b.element('#example-modal-sizes-title-lg').should(have.text('Thanks for submitting the form'))
         b.all('.table-responsive>table>tbody>tr').should(have.size(10))
-        reg_form.table_responsive.element_by(have.text('Student Name')).should(
-            have.text(f'{reg_form.first_name} {reg_form.last_name}'))
-        reg_form.table_responsive.element_by(have.text('Student Email')).should(have.text(f'{reg_form.email}'))
-        reg_form.table_responsive.element_by(have.text('Gender')).should(have.text(f'{reg_form.gender}'))
-        reg_form.table_responsive.element_by(have.text('Mobile')).should(have.text(f'{reg_form.phone}'))
-        reg_form.table_responsive.element_by(have.text('Date of Birth')).should(
-            have.text(f'{reg_form.day_birthday[1:]} {reg_form.month_birthday},{reg_form.year_birthday}'))
-        reg_form.table_responsive.element_by(have.text('Subjects')).should(have.text(f'{reg_form.subject}'))
-        reg_form.table_responsive.element_by(have.text('Hobbies')).should(have.text(f'{reg_form.hobby}'))
-        reg_form.table_responsive.element_by(have.text('Picture')).should(have.text('meme.jpg'))
-        reg_form.table_responsive.element_by(have.text('Address')).should(have.text(f'{reg_form.address}'))
-        reg_form.table_responsive.element_by(have.text('State and City')).should(
-            have.text(f'{reg_form.state} {reg_form.city}'))
-        reg_form.close_modal_window()
+        b.element('.table').all('td').even.should(
+            have.exact_texts(
+                full_name,
+                user.email,
+                user.gender,
+                user.phone,
+                f'{user.day_birthday[1:]} {user.month_birthday},{user.year_birthday}',
+                user.subject,
+                f'{user.hobby}',
+                user.name_image,
+                user.address,
+                f'{user.state} {user.city}'
+            )
+        )

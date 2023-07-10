@@ -14,6 +14,7 @@ class UserStudent:
                  state: str = 'NCR',
                  city: str = 'Noida',
                  ):
+        self.name_image = 'meme.jpg'
         self.first_name = first_name
         self.last_name = last_name
         self.email = f'{self.first_name.lower()}_{self.last_name.lower()}@mail.com'
